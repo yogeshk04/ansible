@@ -1,0 +1,30 @@
+---
+- name: Update web servers
+  hosts: web
+
+  tasks:
+  - name: Ensure dir web is created
+    file:
+      path: /home/ec2-user/web-dir
+      state: directory
+
+
+
+- name: Update app servers
+  hosts: app
+
+  tasks:
+  - name: Ensure dir web is created
+    file:
+      path: /home/ec2-user/app-dir
+      state: directory
+
+- name: Update db servers
+  hosts: db
+
+  tasks:
+  - name: Ensure dir web is created
+    file:
+      path: /home/ec2-user/db-dir
+      state: directory
+

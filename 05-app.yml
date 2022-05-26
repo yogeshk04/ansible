@@ -1,0 +1,31 @@
+---
+- name: Update app servers
+  hosts: app
+  become: yes
+
+  tasks:
+  - name: Install git
+    package:
+      name: git
+      state: present
+
+  - name: Deploy an application
+    git:
+      dest: /var/www/html
+      repo: https://github.com/yogeshk04/ecomm-app.git
+
+- name: Update web servers
+  hosts: web
+  become: yes
+
+  tasks:
+  - name: Install git
+    package:
+      name: git
+      state: present
+
+  - name: Deploy a food application
+    git:
+      dest: /var/www/html
+      repo: https://github.com/yogeshk04/food-app.git
+
