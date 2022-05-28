@@ -1,0 +1,11 @@
+---
+- name: Update web server
+  hosts: web
+  become: yes
+
+  tasks:
+  - name: Install httpd updated configuation 
+    copy:
+      src: /home/ec2-user/httpd.conf
+      dest: /etc/httpd/conf/httpd.conf 
+

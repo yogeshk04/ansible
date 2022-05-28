@@ -1,0 +1,11 @@
+---
+- name: Update web server
+  hosts: web
+  become: yes
+
+  tasks:
+  - name: Restart httpd 
+    service:
+      name: httpd
+      state: restarted 
+
