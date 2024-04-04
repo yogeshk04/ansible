@@ -1,5 +1,12 @@
 # docker container run --name cl -it --detach python
 
+- name: pre-reqs for communit.docker
+  hosts: localhost
+  tags: prereqs
+  tasks:
+    - ansible.builtin.pip:
+        name: requests
+
 - name: create container to use as ansible managed nodes
   hosts: localhost
   tasks:
@@ -9,3 +16,7 @@
       # keep running in background
       tty: true
       interactive: true
+    - community.docker.docker_container:
+      name: sleeper
+      image: python:3.9
+      command: sleep infinity
